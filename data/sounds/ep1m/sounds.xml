@@ -2101,5 +2101,16 @@
 		<PlayOnStart>0</PlayOnStart>
 		<LocalPosition>1.23 9.02 2.5</LocalPosition>
 	</Sound>
+	
+	<Sound>
+		<SignalID>385</SignalID>
+		<Filename>klub_buttons.wav</Filename>
+		<InitVolume>1.0</InitVolume>
+		<MaxVolume>1.0</MaxVolume>
+		<InitPitch>1.0</InitPitch>
+		<Loop>0</Loop>
+		<PlayOnStart>0</PlayOnStart>
+		<LocalPosition>0.8 9.5 2.69</LocalPosition>
+	</Sound>
 
 </Config>

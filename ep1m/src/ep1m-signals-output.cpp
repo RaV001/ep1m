@@ -58,7 +58,8 @@ void EP1m::signalsOutput()
     analogSignal[SIGNAL_KLUB_U_POWER_SUPPLAY] = TO_FLOAT(Ucc >= 49);
 
     QString text = KLUB_BEL->getCurStation();
-    for (size_t i = 0; i < text.size(); ++i)
+
+    for(auto i = 0; i < text.size(); ++i)
     {
         analogSignal[SIGNAL_KLUB_U_STATION_SYMB1 + i] = TO_FLOAT(text[i].unicode());
     }
