@@ -72,6 +72,9 @@ void MiddleBlock::setCurSpeed(int curSpeed)
 //-----------------------------------------------------------------------------
 void MiddleBlock::setCurSpeedLimit(int curSpeedLimit)
 {
+    if(curSpeedLimit < 0)
+        return;
+
     if (oldSpeedLimit_ == curSpeedLimit)
         return;
 
@@ -89,6 +92,9 @@ void MiddleBlock::setCurSpeedLimit(int curSpeedLimit)
 //-----------------------------------------------------------------------------
 void MiddleBlock::setNextSpeedLimit(int nextSpeedLimit)
 {
+    if(nextSpeedLimit < 0)
+        return;
+
     if (oldNextSpeedLimit_ == nextSpeedLimit)
         return;
 

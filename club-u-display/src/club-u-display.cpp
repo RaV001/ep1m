@@ -241,7 +241,6 @@ void ClubUDisplay::update(double t, double dt)
             middleBlock_->setSpeedLimitVisible(false);
             middleBlock_->setCurSpeedLimit(-5);
             middleBlock_->setNextSpeedLimit(-5);
-            middleBlock_->blinkingSpeed(true);
             middleBlock_->setReverse(0);
         }
         else
@@ -250,12 +249,12 @@ void ClubUDisplay::update(double t, double dt)
                              static_cast<int>(input_signals[SIGNAL_KLUB_U_ALSN_FB]));
 
             middleBlock_->setSpeedLimitVisible(true);
-            middleBlock_->setCurSpeed(static_cast<int>(input_signals[SIGNAL_KLUB_U_SPEED]));
             middleBlock_->setCurSpeedLimit(static_cast<int>(input_signals[SIGNAL_KLUB_U_SPEED_LIMIT]));
             middleBlock_->setNextSpeedLimit(static_cast<int>(input_signals[SIGNAL_KLUB_U_SPEED_LIMIT_2]));
-            middleBlock_->blinkingSpeed(false);
             middleBlock_->setReverse(static_cast<int>(input_signals[SIGNAL_KLUB_U_REVERSOR]));
         }
+
+        middleBlock_->setCurSpeed(static_cast<int>(input_signals[SIGNAL_KLUB_U_SPEED]));
 
         // Сбрасываем счётчик
         upd_block = 0;
