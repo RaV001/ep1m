@@ -1,15 +1,11 @@
 #include "speedometer.h"
-
 #include <QPainter>
 #include <QVector>
 #include <QFile>
 
-
-
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
-
 Speedometer::Speedometer(QSize size, QString cfg_path, QWidget *parent)
     : QLabel(parent)
     , num_speed_(0)
@@ -18,7 +14,6 @@ Speedometer::Speedometer(QSize size, QString cfg_path, QWidget *parent)
     , old_num_speed_(0)
     , old_num_speedLimit_(0)
     , old_num_speedNextLimit_(0)
-
 {
     this->resize(size);
    // this->setStyleSheet("border: 1px solid red;");
@@ -27,10 +22,7 @@ Speedometer::Speedometer(QSize size, QString cfg_path, QWidget *parent)
 
     loadScalePontsCoolrds_(cfg_path + "speed-coordinatesOutScale.txt", speed_coordsOutScale);
     loadScalePontsCoolrds_(cfg_path + "speed-coordinatesInsideScale.txt", speed_coordsInsideScale);
-
 }
-
-
 
 //------------------------------------------------------------------------------
 //
@@ -47,8 +39,6 @@ void Speedometer::setSpeed(int speed)
     old_num_speed_ = num_speed_;
 }
 
-
-
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
@@ -63,8 +53,6 @@ void Speedometer::setSpeedLimit(int speedLimit)
 
     old_num_speedLimit_ = num_speedLimit_;
 }
-
-
 
 //------------------------------------------------------------------------------
 //
@@ -81,8 +69,6 @@ void Speedometer::setSpeedNextLimit(int speedNextLimit)
     old_num_speedNextLimit_ = num_speedNextLimit_;
 }
 
-
-
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
@@ -92,7 +78,6 @@ void Speedometer::drawArc_(int num_speed, int num_speedLimit, int num_speedNextL
     QPixmap pix = QPixmap::fromImage(img_);
     QPainter paint(&pix);
     paint.setRenderHint(QPainter::Antialiasing, true);
-
 
     if ((num_speedLimit_ >= 0) && (num_speedNextLimit >= 0))
     {
@@ -112,12 +97,9 @@ void Speedometer::drawArc_(int num_speed, int num_speedLimit, int num_speedNextL
         paint.drawPoint(speed_coordsInsideScale[i]);
     }
 
-
     paint.end();
     this->setPixmap(pix);
 }
-
-
 
 //------------------------------------------------------------------------------
 //
@@ -141,6 +123,4 @@ void Speedometer::loadScalePontsCoolrds_(QString txt_path, QVector<QPoint> &vec)
         }
         fileTxt.close();
     }
-
 }
-

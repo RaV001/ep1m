@@ -180,6 +180,8 @@ void ClubUDisplay::update(double t, double dt)
             topBlock_->setIndP(false);
             topBlock_->setIndStraight(false);
             topBlock_->setIndSide(false);
+
+            bottomBlock_->clear();
         }
         else
         {
@@ -189,6 +191,8 @@ void ClubUDisplay::update(double t, double dt)
             topBlock_->setIndP(static_cast<bool>(input_signals[SIGNAL_KLUB_U_P]));
             topBlock_->setIndStraight(static_cast<bool>(input_signals[SIGNAL_KLUB_U_STRAIGHT]));
             topBlock_->setIndSide(static_cast<bool>(input_signals[SIGNAL_KLUB_U_SIDE]));
+
+            bottomBlock_->setDistToTarget(static_cast<int>(input_signals[SIGNAL_KLUB_U_TARGET_DIST]));
         }
 
         seconds = static_cast<int>(input_signals[SIGNAL_KLUB_U_SHEDULE_TIME]);
@@ -196,7 +200,6 @@ void ClubUDisplay::update(double t, double dt)
 
         topBlock_->setCoordinate(static_cast<double>(input_signals[SIGNAL_KLUB_U_COORDINATE]));
 
-        bottomBlock_->setDistToTarget(static_cast<int>(input_signals[SIGNAL_KLUB_U_TARGET_DIST]));
         return;
     }
 

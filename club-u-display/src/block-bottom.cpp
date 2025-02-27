@@ -1,16 +1,12 @@
 #include "block-bottom.h"
 
-
-
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
-BottomBlock::BottomBlock(QSize size, QWidget *parent)
-    : QLabel(parent)
+BottomBlock::BottomBlock(QSize size, QWidget *parent) : QLabel(parent)
 {
     this->resize(size);
     //this->setStyleSheet("border: 1px solid red");
-
 
     //
     txtPaintDistToTarget_ = new TextPaint(QSize(90, 20), this);
@@ -37,8 +33,6 @@ BottomBlock::BottomBlock(QSize size, QWidget *parent)
     txtPaintTargetName_->setParams(24, 19, true);
 }
 
-
-
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
@@ -52,8 +46,6 @@ void BottomBlock::setDistToTarget(int dist)
     oldDistToTarget_ = dist;
 }
 
-
-
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
@@ -65,4 +57,13 @@ void BottomBlock::setTargetName(QString txt)
     txtPaintTargetName_->setText(txt.toUpper());
 
     oldTargetName_ = txt;
+}
+
+void BottomBlock::clear()
+{
+    txtPaintDistToTarget_->clear();
+    oldDistToTarget_ = -1;
+
+    txtPaintTargetName_->clear();
+    oldTargetName_ = "";
 }
