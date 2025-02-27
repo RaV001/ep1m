@@ -289,5 +289,14 @@ void TopBlock::setSheduleTime(int h, int m, int s)
     }
 }
 
+void TopBlock::clearSheduleTime()
+{
+    txtPaintSheduleTimeH_->clear();
+    oldSheduleH_ = -1;
 
+    txtPaintSheduleTimeM_->clear();
+    oldSheduleM_ = -1;
 
+    txtPaintSheduleTimeS_->clear();
+    oldSheduleS_ = -1;
+}

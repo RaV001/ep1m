@@ -59,11 +59,8 @@ void BottomBlock::setTargetName(QString txt)
     oldTargetName_ = txt;
 }
 
-void BottomBlock::clear()
+void BottomBlock::clearDistToTarget()
 {
     txtPaintDistToTarget_->clear();
     oldDistToTarget_ = -1;
-
-    txtPaintTargetName_->clear();
-    oldTargetName_ = "";
 }

@@ -181,7 +181,9 @@ void ClubUDisplay::update(double t, double dt)
             topBlock_->setIndStraight(false);
             topBlock_->setIndSide(false);
 
-            bottomBlock_->clear();
+            bottomBlock_->clearDistToTarget();
+
+            topBlock_->clearSheduleTime();
         }
         else
         {
@@ -193,10 +195,10 @@ void ClubUDisplay::update(double t, double dt)
             topBlock_->setIndSide(static_cast<bool>(input_signals[SIGNAL_KLUB_U_SIDE]));
 
             bottomBlock_->setDistToTarget(static_cast<int>(input_signals[SIGNAL_KLUB_U_TARGET_DIST]));
-        }
 
-        seconds = static_cast<int>(input_signals[SIGNAL_KLUB_U_SHEDULE_TIME]);
-        topBlock_->setSheduleTime(seconds / 3600, seconds / 60 % 60, seconds % 60);
+            seconds = static_cast<int>(input_signals[SIGNAL_KLUB_U_SHEDULE_TIME]);
+            topBlock_->setSheduleTime(seconds / 3600, seconds / 60 % 60, seconds % 60);
+        }
 
         topBlock_->setCoordinate(static_cast<double>(input_signals[SIGNAL_KLUB_U_COORDINATE]));
 
@@ -216,21 +218,33 @@ void ClubUDisplay::update(double t, double dt)
     // Блок обновлений №3
     if (upd_block == 3)
     {
-        QString text = "";
-        for (size_t i = 0; i < 8; ++i)
+        if (input_signals[SIGNAL_KLUB_U_EPK] == 0.0f)
         {
-            int c = static_cast<int>(input_signals[SIGNAL_KLUB_U_STATION_SYMB1 + i]);
-            text.push_back(((c > 0) && (c < 65536)) ? QChar(c) : QChar(' '));
-        }
-        topBlock_->setStationName(text);
+            topBlock_->setStationName("");
 
-        text = "";
-        for (size_t i = 0; i < 24; ++i)
-        {
-            int c = static_cast<int>(input_signals[SIGNAL_KLUB_U_STRING_SYMB1 + i]);
-            text.push_back(((c > 0) && (c < 65536)) ? QChar(c) : QChar(' '));
+            bottomBlock_->setTargetName("");
         }
-        bottomBlock_->setTargetName(text);
+        else
+        {
+            QString text = "";
+            for (size_t i = 0; i < 8; ++i)
+            {
+                int c = static_cast<int>(input_signals[SIGNAL_KLUB_U_STATION_SYMB1 + i]);
+                text.push_back(((c > 0) && (c < 65536)) ? QChar(c) : QChar(' '));
+            }
+
+            topBlock_->setStationName(text);
+
+            text = "";
+            for (size_t i = 0; i < 24; ++i)
+            {
+                int c = static_cast<int>(input_signals[SIGNAL_KLUB_U_STRING_SYMB1 + i]);
+                text.push_back(((c > 0) && (c < 65536)) ? QChar(c) : QChar(' '));
+            }
+
+            bottomBlock_->setTargetName(text);
+        }
+
         return;
     }
 

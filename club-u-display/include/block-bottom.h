@@ -13,7 +13,7 @@ public:
 
     void setDistToTarget(int dist);
     void setTargetName(QString txt);
-    void clear();
+    void clearDistToTarget();
 
 private:
 

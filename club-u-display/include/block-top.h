@@ -50,6 +50,7 @@ public:
     void setStationName(QString stationName);
     void setCurTime(int h, int m, int s);
     void setSheduleTime(int h, int m, int s);
+    void clearSheduleTime();
     void setIndStraight(bool flag);
     void setIndSide(bool flag);
 
