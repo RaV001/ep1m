@@ -146,7 +146,7 @@ void ClubUDisplay::update(double t, double dt)
 
     upd_time = 0.0;
 
-    if (input_signals[SIGNAL_KLUB_U_POWER_SUPPLAY] == 0.0f)
+    if (!static_cast<bool>(input_signals[SIGNAL_KLUB_U_POWER_SUPPLAY]))
     {
         alsn_->setVisible(false);
         topBlock_->setVisible(false);
@@ -172,7 +172,7 @@ void ClubUDisplay::update(double t, double dt)
     // Блок обновлений №1
     if (upd_block == 1)
     {
-        if (input_signals[SIGNAL_KLUB_U_EPK] == 0.0f)
+        if (!static_cast<bool>(input_signals[SIGNAL_KLUB_U_EPK]))
         {
             topBlock_->setBditelnost(false);
             topBlock_->setCassete(false);
@@ -218,7 +218,7 @@ void ClubUDisplay::update(double t, double dt)
     // Блок обновлений №3
     if (upd_block == 3)
     {
-        if (input_signals[SIGNAL_KLUB_U_EPK] == 0.0f)
+        if (!static_cast<bool>(input_signals[SIGNAL_KLUB_U_EPK]))
         {
             topBlock_->setStationName("");
 
@@ -257,7 +257,7 @@ void ClubUDisplay::update(double t, double dt)
     // Блок обновлений №4
     if (upd_block >= 4)
     {
-        if (input_signals[SIGNAL_KLUB_U_EPK] == 0.0f)
+        if (!static_cast<bool>(input_signals[SIGNAL_KLUB_U_EPK]))
         {
             alsn_->setSignal(ALSN_COLORS::GREEN, 0);
 
