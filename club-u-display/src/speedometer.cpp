@@ -10,6 +10,7 @@ Speedometer::Speedometer(QSize size, QString cfg_path, QWidget *parent)
     : QLabel(parent)
     , num_speed_(0)
     , num_speedLimit_(0)
+    , cur_speed_limit(0)
     , num_speedNextLimit_(0)
     , old_num_speed_(0)
     , old_num_speedLimit_(0)
@@ -34,7 +35,7 @@ void Speedometer::setSpeed(int speed)
     if (num_speed_ == old_num_speed_)
         return;
 
-    drawArc_(num_speed_, num_speedLimit_, num_speedNextLimit_);
+    drawArc_(num_speed_);
 
     old_num_speed_ = num_speed_;
 }
@@ -44,12 +45,14 @@ void Speedometer::setSpeed(int speed)
 //------------------------------------------------------------------------------
 void Speedometer::setSpeedLimit(int speedLimit)
 {
+    cur_speed_limit = speedLimit;
+
     num_speedLimit_ = speedLimit / 5;
 
     if (num_speedLimit_ == old_num_speedLimit_)
         return;
 
-    drawArc_(num_speed_, num_speedLimit_, num_speedNextLimit_);
+    drawArc_(num_speed_, num_speedLimit_);
 
     old_num_speedLimit_ = num_speedLimit_;
 }
@@ -79,12 +82,15 @@ void Speedometer::drawArc_(int num_speed, int num_speedLimit, int num_speedNextL
     QPainter paint(&pix);
     paint.setRenderHint(QPainter::Antialiasing, true);
 
-    if ((num_speedLimit_ >= 0) && (num_speedNextLimit >= 0))
+    if(num_speedLimit >= 0)
     {
         // ограничение скорости
         paint.setPen(QPen( QColor(Qt::red), 9, Qt::SolidLine, Qt::RoundCap ));
         paint.drawPoint(speed_coordsOutScale[num_speedLimit]);
+    }
 
+    if(num_speedNextLimit >= 0)
+    {
         // следующее ограничение скорости
         paint.setPen(QPen( QColor(Qt::yellow), 9, Qt::SolidLine, Qt::RoundCap ));
         paint.drawPoint(speed_coordsOutScale[num_speedNextLimit]);

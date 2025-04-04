@@ -24,6 +24,7 @@ private:
 
     int num_speed_;
     int num_speedLimit_;
+    int cur_speed_limit;
     int num_speedNextLimit_;
 
     int old_num_speed_;
@@ -31,7 +32,7 @@ private:
     int old_num_speedNextLimit_;
 
 
-    void drawArc_(int num_speed, int num_speedLimit, int num_speedNextLimit);
+    void drawArc_(int num_speed, int num_speedLimit = -1, int num_speedNextLimit = -1);
 
     void loadScalePontsCoolrds_(QString txt_path, QVector<QPoint> &vec);
 

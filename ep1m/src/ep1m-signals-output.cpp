@@ -64,13 +64,19 @@ void EP1m::signalsOutput()
         analogSignal[SIGNAL_KLUB_U_STATION_SYMB1 + i] = TO_FLOAT(text[i].unicode());
     }
 
-    // OLD KLUB!!!!!!!!!
+    text = KLUB_BEL->getTypeTarget();
 
-    // text = klub_BEL->getInfoText();
-    // for (size_t i = 0; i < text.size(); ++i)
-    // {
-    //     analogSignal[SIGNAL_KLUB_U_STRING_SYMB1 + i] = TO_FLOAT(text[i].unicode());
-    // }
+    for(auto i = 0; i < text.size(); ++i)
+    {
+        analogSignal[SIGNAL_KLUB_U_STRING_SYMB1 + i] = TO_FLOAT(text[i].unicode());
+    }
+
+    text = KLUB_BEL->getNameTarget();
+
+    for(auto i = 0; i < text.size(); ++i)
+    {
+        analogSignal[SIGNAL_KLUB_U_LITER_SYMB1 + i] = TO_FLOAT(text[i].unicode());
+    }
 
     analogSignal[SIGNAL_KLUB_U_SHEDULE_TIME] = 0.0f;
 

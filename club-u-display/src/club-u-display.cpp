@@ -236,9 +236,15 @@ void ClubUDisplay::update(double t, double dt)
             topBlock_->setStationName(text);
 
             text = "";
-            for (size_t i = 0; i < 24; ++i)
+            for (size_t i = 0; i < 18; ++i)
             {
                 int c = static_cast<int>(input_signals[SIGNAL_KLUB_U_STRING_SYMB1 + i]);
+                text.push_back(((c > 0) && (c < 65536)) ? QChar(c) : QChar(' '));
+            }
+
+            for (size_t i = 0; i < 6; ++i)
+            {
+                int c = static_cast<int>(input_signals[SIGNAL_KLUB_U_LITER_SYMB1 + i]);
                 text.push_back(((c > 0) && (c < 65536)) ? QChar(c) : QChar(' '));
             }
 

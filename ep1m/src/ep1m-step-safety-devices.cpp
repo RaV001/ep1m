@@ -20,6 +20,8 @@ void EP1m::stepSafetyDevices(double t, double dt)
     KLUB_BEL->setTractionIsZero(km->isZero());
     KLUB_BEL->setReversorDirection(reversor->getState());
     KLUB_BEL->setDistanceTarget(coil_ALSN_fwd->getNextSignalDistance());
+    KLUB_BEL->setTypeTarget(); // Возможность установки типа цели, по умолчанию "СВЕТОФОР"
+    KLUB_BEL->setNameTarget(coil_ALSN_fwd->getNextSignalLiter());
     KLUB_BEL->setCoord(profile_point_data.position);
     KLUB_BEL->setRailCoord(profile_point_data.railway_coord);
     KLUB_BEL->setOmega(wheel_omega[0]);
