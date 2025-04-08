@@ -17,8 +17,7 @@ public:
     MiddleBlock(QSize _size, QString cfg_path, QWidget* parent = Q_NULLPTR);
 
     void setCurSpeed(int curSpeed);
-    void setCurSpeedLimit(int curSpeedLimit);
-    void setNextSpeedLimit(int nextSpeedLimit);
+    void setSpeedLimits(int curSpeedLimit, int nextSpeedLimit);
     void setReverse(int reverse);
 
     void setSpeedLimitVisible(bool flag);

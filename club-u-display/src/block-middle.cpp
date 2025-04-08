@@ -65,45 +65,27 @@ void MiddleBlock::setCurSpeed(int curSpeed)
     oldSpeed_ = curSpeed;
 }
 
-
-
-//-----------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------
-void MiddleBlock::setCurSpeedLimit(int curSpeedLimit)
+void MiddleBlock::setSpeedLimits(int curSpeedLimit, int nextSpeedLimit)
 {
-    if(curSpeedLimit < 0)
+    if(curSpeedLimit < 0 && nextSpeedLimit < 0)
+    {
+        speedometer_->clearSpeedLimits();
+        oldSpeedLimit_ = curSpeedLimit;
+        oldNextSpeedLimit_ = nextSpeedLimit;
+
+        return;
+    }
+
+    if(oldSpeedLimit_ == curSpeedLimit && oldNextSpeedLimit_ == nextSpeedLimit)
         return;
 
-    if (oldSpeedLimit_ == curSpeedLimit)
-        return;
-
-    speedometer_->setSpeedLimit(curSpeedLimit);
+    speedometer_->setSpeedLimits(curSpeedLimit, nextSpeedLimit);
 
     txtCurSpeedLimit_->setText(QString::number(curSpeedLimit));
 
     oldSpeedLimit_ = curSpeedLimit;
-}
-
-
-
-//-----------------------------------------------------------------------------
-//
-//-----------------------------------------------------------------------------
-void MiddleBlock::setNextSpeedLimit(int nextSpeedLimit)
-{
-    if(nextSpeedLimit < 0)
-        return;
-
-    if (oldNextSpeedLimit_ == nextSpeedLimit)
-        return;
-
-    speedometer_->setSpeedNextLimit(nextSpeedLimit);
-
     oldNextSpeedLimit_ = nextSpeedLimit;
 }
-
-
 
 //-----------------------------------------------------------------------------
 //

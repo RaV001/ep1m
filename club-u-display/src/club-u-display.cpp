@@ -262,8 +262,7 @@ void ClubUDisplay::update(double t, double dt)
             alsn_->setSignal(ALSN_COLORS::GREEN, 0);
 
             middleBlock_->setSpeedLimitVisible(false);
-            middleBlock_->setCurSpeedLimit(-5);
-            middleBlock_->setNextSpeedLimit(-5);
+            middleBlock_->setSpeedLimits(-5, -5);
             middleBlock_->setReverse(0);
         }
         else
@@ -272,8 +271,8 @@ void ClubUDisplay::update(double t, double dt)
                              static_cast<int>(input_signals[SIGNAL_KLUB_U_ALSN_FB]));
 
             middleBlock_->setSpeedLimitVisible(true);
-            middleBlock_->setCurSpeedLimit(static_cast<int>(input_signals[SIGNAL_KLUB_U_SPEED_LIMIT]));
-            middleBlock_->setNextSpeedLimit(static_cast<int>(input_signals[SIGNAL_KLUB_U_SPEED_LIMIT_2]));
+            middleBlock_->setSpeedLimits(static_cast<int>(input_signals[SIGNAL_KLUB_U_SPEED_LIMIT]),
+                                         static_cast<int>(input_signals[SIGNAL_KLUB_U_SPEED_LIMIT_2]));
             middleBlock_->setReverse(static_cast<int>(input_signals[SIGNAL_KLUB_U_REVERSOR]));
         }
 
